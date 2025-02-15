@@ -1,45 +1,48 @@
-@media(max-width: 700px){
-  .brand{
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin: 10px !important;
-  }
-  .brand .chungus{
-    font-size: 50px !important;
-  }
-  .logo{
-    margin: 10px !important;
-    height: 30px !important;
-  }
-  .nav-pills{
-    justify-content: space-around !important;
-    margin-top: 0px !important;
-  }
-}
+/*Title*/
 .custom-navbar a.nav-link{
   color: #6B705C !important;
+}
+.custom-navbar{
+  border-bottom: 2px solid #6B705C !important;
+  display: flex;  
+  flex-wrap: wrap;  
+  justify-content: center;  
+  padding: 1rem 0rem 1rem 0rem;  
+  margin-bottom: 1.5rem;
 }
 .logo{
   height: 50px;
   margin: 20px;
-
+  margin-left: 0px;
+  align-items: flex-start !important;
+}
+a.brand{
+ display: flex; 
+ align-items: center;
+ margin-bottom: 16px; 
+ margin-right: auto; 
+ text-decoration: none;
 }
 .navbutton{
   background-color: #B7B7A4 !important;
 }
 .nav-pills{
-  margin-top: 30px;
+  margin-top: 25px;
 }
 body{
   background-color:#F8F6F4 !important;
+  background-image: url("/images/PaperTexture.jpg");
+  background-size: 130%;
 }
 .chungus{
   font-family: OldStandardTT;
-  
 }
 .smol{
   font-family: Mulish !important;
+}
+.brand>span{
+  color: #6B705C !important;
+  font-size: 3vh !important;
 }
 
 /*Cards*/
@@ -60,4 +63,44 @@ body{
 }
 .foot{
   border-top: 2px solid #6B705C !important;
+}
+
+
+/*Media Querries: header stack for small screens*/
+@media(max-width: 1200px){
+  .custom-navbar{
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 0px;
+    margin-bottom: 1.5rem !important;
+  }
+  .brand .chungus{
+    font-size: 50px !important;
+  }
+  .logo{
+    margin: 10px ;
+    height: 30px ;
+  }
+  a.brand{
+    margin-right: 0;
+    margin-left: 0; 
+    margin: auto !important; 
+  }
+  .brand{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    margin-bottom: 16px;
+  }
+  .nav-pills{
+    justify-content: space-around ;
+    margin-top: 0px ;
+  }
+  header{
+    flex-direction: column;
+  }
+
 }
