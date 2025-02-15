@@ -1,0 +1,184 @@
+/* Title*/
+.custom-navbar a.nav-link{
+  color: #6B705C !important;
+}
+.custom-navbar{
+  border-bottom: 2px solid #6B705C !important;
+  display: flex;  
+  flex-wrap: wrap;  
+  justify-content: center;  
+  padding: 1rem 0rem 1rem 0rem;  
+  margin-bottom: 1.5rem;
+}
+.logo{
+  height: 50px;
+  margin: 20px;
+  margin-left: 0px;
+  align-items: flex-start !important;
+}
+a.brand{
+ display: flex; 
+ align-items: center;
+ margin-bottom: 16px; 
+ margin-right: auto; 
+ text-decoration: none;
+}
+.navbutton{
+  background-color: #B7B7A4 !important;
+}
+.nav-pills{
+  margin-top: 25px;
+}
+body{
+  background-color:#F8F6F4 !important;
+  background-image: url("/images/Paper\ Texture.jpg");
+}
+.chungus{
+  font-family: OldStandardTT;
+}
+.smol{
+  font-family: Mulish !important;
+}
+.brand>span{
+  color: #6B705C !important;
+  font-size: 3vh !important;
+}
+
+/*Hero*/
+.txtblock{
+  color: #6B705C !important;
+}
+.hero-img{
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
+}
+#Hero .chungus{
+  color: #6B705C !important;
+}
+.jumbotron{
+  width: 95% !important;
+  color: #A5A58D !important;
+  padding-top: 0px !important;
+}
+#Hero .btn-primary {
+  background-color: #6B705C !important;
+  color: #B7B7A4 !important;
+  border-color: #A5A58D !important;
+} 
+#Hero .btn-outline-secondary {
+  color: #A5A58D !important;
+  border-color: #A5A58D !important;
+}
+
+/*Calendar*/
+.calendly-inline-widget{
+  overflow: hidden;
+}
+#pricing>div>div>h3{
+  font-size: 3rem; 
+  font-weight: 600;
+}
+#pricing>div>div{
+  margin-top: 2rem;
+  text-align: center;
+}
+@media(max-width: 1000px){
+  .calendar{
+    border-radius: 20% !important;
+    margin: 2rem;
+  }
+}
+
+
+/*Flash tattoos */
+#tats > div > div:nth-child(1) > h3{
+  font-size: 3rem; 
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+#tats>div{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  gap: 0rem 1.5rem;
+  margin-bottom: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0rem 1.5rem 2rem 1.5rem;
+
+}
+.container>div:first-child{
+  color: #6B705C;
+  grid-column: span 4;
+  margin-bottom: 1rem !important;
+}
+.bookmark img{
+  height: auto;
+  width:  100%;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 8px ridge #e7e7e7;
+
+}
+.odd{
+  margin-top: 3rem;
+}
+/*Media queries for flash tattoos on big screens*/
+@media (min-width: 1000px){
+#tats.container{
+  padding: 1rem 4rem 1rem 4rem;
+}
+  
+}
+/* Footer*/
+.smol>span{
+  color: #6B705C !important;
+  margin-bottom: 0px !important; 
+}
+.bi-brush{
+  color: #6B705C;
+}
+.bi-instagram{
+  color: #6B705C;
+}
+.foot{
+  border-top: 2px solid #6B705C !important;
+}
+
+/*Media Querries: header stack for small screens*/
+@media(max-width: 1200px){
+  .custom-navbar{
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 0px;
+    margin-bottom: 1.5rem !important;
+  }
+  .brand .chungus{
+    font-size: 50px !important;
+  }
+  .logo{
+    margin: 10px ;
+    height: 30px ;
+  }
+  a.brand{
+    margin-right: 0;
+    margin-left: 0; 
+    margin: auto !important; 
+  }
+  .brand{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    margin-bottom: 16px;
+  }
+  .nav-pills{
+    justify-content: space-around ;
+    margin-top: 0px ;
+  }
+  header{
+    flex-direction: column;
+  }
+
+}

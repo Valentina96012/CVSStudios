@@ -1,0 +1,164 @@
+/*Title*/
+.custom-navbar a.nav-link{
+  color: #6B705C !important;
+}
+.custom-navbar{
+  border-bottom: 2px solid #6B705C !important;
+  display: flex;  
+  flex-wrap: wrap;  
+  justify-content: center;  
+  padding: 1rem 0rem 1rem 0rem;  
+  margin-bottom: 1.5rem;
+}
+.logo{
+  height: 50px;
+  margin: 20px;
+  margin-left: 0px;
+  align-items: flex-start !important;
+}
+a.brand{
+ display: flex; 
+ align-items: center;
+ margin-bottom: 16px; 
+ margin-right: auto; 
+ text-decoration: none;
+}
+.navbutton{
+  background-color: #B7B7A4 !important;
+}
+.nav-pills{
+  margin-top: 25px;
+}
+body{
+  background-color:#F8F6F4 !important;
+  background-image: url("/images/Paper\ Texture.jpg");
+}
+.chungus{
+  font-family: OldStandardTT;
+}
+.smol{
+  font-family: Mulish !important;
+}
+.brand>span{
+  color: #6B705C !important;
+  font-size: 3vh !important;
+}
+
+/*Hero*/
+.txtblock{
+  color: #6B705C !important;
+}
+.hero-img{
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
+}
+#Hero .chungus{
+  color: #6B705C !important;
+}
+.jumbotron{
+  width: 95% !important;
+  color: #A5A58D !important;
+  padding-top: 0px !important;
+}
+#Hero .btn-primary {
+  background-color: #6B705C !important;
+  color: #B7B7A4 !important;
+  border-color: #A5A58D !important;
+} 
+#Hero .btn-outline-secondary {
+  color: #A5A58D !important;
+  border-color: #A5A58D !important;
+}
+#Hero a.btnlink{
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+/* Shop stuff*/
+#Products .container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  justify-items: left; 
+  gap: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-bottom: 2rem;
+}
+.productimg{
+  align-items: center;
+  aspect-ratio: 1;
+}
+.productimg img{
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.schungus{
+  grid-column: span 3;
+  text-align: left;
+  color: #6B705C;
+  font-weight: bold;
+}
+
+/* Footer*/
+.smol>span{
+  color: #6B705C !important;
+  margin-bottom: 0px !important; 
+}
+.bi-brush{
+  color: #6B705C;
+}
+.bi-instagram{
+  color: #6B705C;
+}
+.foot{
+  border-top: 2px solid #6B705C !important;
+}
+
+
+
+/*Media Querries: header stack for small screens*/
+@media(max-width: 1200px){
+  .custom-navbar{
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 0px;
+    margin-bottom: 1.5rem !important;
+  }
+  .brand .chungus{
+    font-size: 50px !important;
+  }
+  .logo{
+    margin: 10px ;
+    height: 30px ;
+  }
+  a.brand{
+    margin-right: 0;
+    margin-left: 0; 
+    margin: auto !important; 
+  }
+  .brand{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    margin-bottom: 16px;
+  }
+  .nav-pills{
+    justify-content: space-around ;
+    margin-top: 0px ;
+  }
+  header{
+    flex-direction: column;
+  }
+
+}
+/*Media Querries anchor tag buttons small screens*/
+@media(max-width: 1200px){
+  #Hero .buttonlinks{
+    display: block;
+    width: 100%;
+  }
+}
