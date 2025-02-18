@@ -29,11 +29,23 @@ a.brand{
 .nav-pills{
   margin-top: 25px;
 }
+
 body{
-  background-color:#F8F6F4 !important;
-  background-image: url("/images/bg-texture.jpg")!important;
+  background-color:#F8F6F4;
+  background-image: url("https://raw.githubusercontent.com/Valentina96012/CVSStudios/main/images/bg-texture.jpg")!important;
   background-size: 130%;
+  animation: fadeInBg 1s ease-in-out;
 }
+
+@keyframes fadeInBg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .chungus{
   font-family: OldStandardTT !important;
 }
