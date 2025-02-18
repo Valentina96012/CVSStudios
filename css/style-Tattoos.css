@@ -30,12 +30,12 @@ a.brand{
   margin-top: 25px;
 }
 body{
-  background-color:#F8F6F4 !important;
-  background-image: url("/images/PaperTexture.jpg");
+  background-color:#F8F6F4;
+  background-image: url("/images/PaperTexture.jpg")!important;
   background-size: 130%;
 }
 .chungus{
-  font-family: OldStandardTT;
+  font-family: OldStandardTT!important;
 }
 .smol{
   font-family: Mulish !important;
@@ -68,6 +68,13 @@ body{
 #Hero .btn-outline-secondary {
   color: #A5A58D !important;
   border-color: #A5A58D !important;
+}
+html {
+  scroll-behavior: smooth;
+}
+#Hero a.btnlink {
+  text-decoration: none !important;
+  color: inherit !important;
 }
 
 /*Calendar*/
