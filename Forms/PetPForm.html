@@ -26,12 +26,12 @@
 
 
 
-  <h1 class="chungus">Tattoo Commission Form</h1>
+  <h1 class="chungus">Pet Portrait Commission Form</h1>
   
-  <form name="tattoo-commission" method="POST" data-netlify="true">
-    <p>Hey honey! Thanks so much for your interest in commissioning a custom tattoo design! To keep things smooth and transparent, make sure to take a look at my booking policy below before submitting your request.</p>
+  <form name="Pet Portrait Comission" method="POST" data-netlify="true">
+    <p>Hey honey, so excited to work on your fuzzy lil guy! I just have a couple questions for ya before getting started. To keep things smooth and transparent, make sure to take a look at my booking policy below before submitting your request.</p>
 
-    <input type="hidden" name="tatform" value="tattoo-commission">
+    <input type="hidden" name="PForm" value="Pet-commission">
 
     <label for="name">Your Name:</label>
     <input type="text" name="name" id="name" required>
@@ -39,29 +39,27 @@
     <label for="email">Your Email:</label>
     <input type="email" name="email" id="email" required>
 
-    <label for="tattoo-size">Tattoo Size (inches):</label>
-    <input type="text" name="tattoo-size" id="tattoo-size" placeholder="e.g., 5x5 inches" required>
-
-    <label for="placement">Tattoo Placement:</label>
-    <input type="text" name="placement" id="placement" placeholder="e.g., Left forearm">
-
-    <label for="reference-image">Placement Reference (Optional):</label>
-    <input type="file" name="reference-image" id="reference-image" accept="image/*">
-  
-
-    <label for="style">Preferred Style:</label>
-    <select name="style" id="style" required>
-      <option value="Watercolor">Watercolor</option>
-      <option value="Fine Line">Linework</option>
-      <option value="Botanical">Botanical</option>
-      <option value="Custom">Custom</option>
+    <label for="size">Painting Size:</label>
+    <select name="size" id="size" required>
+      <option value="A4">8x12</option>
+      <option value="A3">12x17</option>
+      <option value="other">Other</option>
     </select>
 
-    <label for="description">Tell me about your idea:</label>
-    <textarea name="description" id="description" rows="5" placeholder="Let's get a detailed description; subject, theme or any hidden elements you may want!" required></textarea>
+    <label for="placement">Hue Prefference?</label>
+    <input type="text" name="placement" id="placement" placeholder="e.g., I'd like hues of blue and purple">
 
-    <label for="reference-image">Reference Inspo (Optional):</label>
+    <label for="reference-image">Reference Photos; I would like to see the baby:</label>
     <input type="file" name="reference-image" id="reference-image" accept="image/*">
+
+    <label for="placement">Choose your floral!</label>
+    <input type="text" name="floral" id="floral" placeholder="Or any other botanical! If you had something else in mind let me know below">
+
+    <label for="description">Wanna let me know anything else?</label>
+    <textarea name="description" id="description" rows="5" placeholder="I'd love to know a little more about our subject, theme or any hidden elements you may want!" required></textarea>
+
+    <label for="placement">Are we working with a deadline?</label>
+    <input type="text" name="floral" id="floral" placeholder="e.g., Birthday or anniversary coming up (Rush fees might apply)">
   
 
     <button type="submit">Submit Request</button>
@@ -69,19 +67,19 @@
   <div class="policy">
     <h2>Comissions Policy</h2>
     
-    <p>A non-refundable downpayment of $10 is required to begin the design process.
+    <p>A non-refundable downpayment of 20% is required to begin the design process.
         This secures your spot and covers initial concept sketches and communication.
         Payments details will be provided upon acceptance of your request.
         Once the final design is approved, the remaining balance (total price - downpayment) will be due before delivery.
         Upon receipt of full payment, you will receive:</p>
            <ul> 
-           <li>A high-resolution digital file of your tattoo design.</li>
-           <li> digitized stencil ready to go for your tattoo artist.</li>
-           <li>Any agreed-upon extras (e.g., full-color painting, physical drawing, etc).</li>
+           <li>A full-color painting mailed straight to you!</li>
+           <li>A high-resolution digital file of your comission.</li>
+           <li>A lil gift <3.</li>
 
            </ul>
        <p> The commission includes 2 rounds of revisions in case you want to fine-tune the design.
-        The typical turnaround is 1-2 weeks, depending on complexity and current workload.
+        The typical turnaround is 3-4 weeks, depending on complexity and current workload.
         You’ll receive regular updates throughout the process.
         I reserve the right to share the completed design in my portfolio or social media unless you request otherwise.
         Once the initial sketches have been sent, the downpayment becomes fully non-refundable.

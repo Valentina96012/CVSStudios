@@ -155,3 +155,9 @@ html {
     justify-content: center;
   }
 }
+/*Media for big assed images who need to know their place*/
+@media(min-width:1200px){
+  #Hero > div > div > div.col-10.col-sm-8.col-lg-6.pb-2 > img{
+    max-width: 70% !important;
+  }
+}
