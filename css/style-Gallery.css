@@ -156,3 +156,14 @@ body{
   }
 
 }
+ /*Media querries for hero*/
+  @media(max-width:1200px){
+    #hero > div > div > div:nth-child(2){
+      margin-top: 1rem;
+      
+    }
+    #hero > div > div{
+      text-align: center;
+      justify-content: center;
+    }
+  }

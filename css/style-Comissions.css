@@ -55,6 +55,40 @@ body{
   font-size: 3vh !important;
 }
 
+/*Hero*/
+.txtblock{
+  color: #6B705C !important;
+}
+#Hero .chungus{
+  color: #6B705C !important;
+}
+.jumbotron{
+  width: 95% !important;
+  color: #A5A58D !important;
+  padding-top: 0px !important;
+}
+#Hero .btn-primary {
+  background-color: #6B705C !important;
+  color: #B7B7A4 !important;
+  border-color: #A5A58D !important;
+} 
+#Hero .btn-outline-secondary {
+  color: #A5A58D !important;
+  border-color: #A5A58D !important;
+}
+html {
+  scroll-behavior: smooth;
+}
+#Hero a.btnlink {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+/*Hero Img*/
+#Hero > div > div > div.col-10.col-sm-8.col-lg-6.pb-2 > img{
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
+ 
+}
+
 /*Cards*/
 
 
@@ -113,4 +147,11 @@ body{
     flex-direction: column;
   }
 
+}
+ /*Media querries for hero*/
+ @media(max-width:1200px){
+  #Hero > div > div > div:nth-child(2){
+    text-align: center;
+    justify-content: center;
+  }
 }

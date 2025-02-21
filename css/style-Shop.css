@@ -196,3 +196,10 @@ body{
     width: 100%;
   }
 }
+ /*Media querries for hero*/
+ @media(max-width:1200px){
+  #Hero > div > div > div.col-lg-6.mt-0{
+    text-align: center;
+    justify-content: center;
+  }
+}
