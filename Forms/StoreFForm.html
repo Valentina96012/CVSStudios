@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tattoo Commission</title>
-  <link rel="stylesheet" href="../css/style-Forms/style-tatsform.css" />
+  <title>Storefront Quote</title>
+  <link rel="stylesheet" href="../css/style-Forms/style-forms.css" />
  
 </head>
 <body>
@@ -26,10 +26,10 @@
 
 
 
-  <h1 class="chungus">Tattoo Commission Form</h1>
+  <h1 class="chungus">Storefront Commission/Quote Form</h1>
   
-  <form name="tattoo-commission" method="POST" data-netlify="true">
-    <p>Hey honey! Thanks so much for your interest in commissioning a custom tattoo design! To keep things smooth and transparent, make sure to take a look at my booking policy below before submitting your request.</p>
+  <form name="sotrefront-commission" method="POST" data-netlify="true">
+    <p>Hey honey! Thanks so much for your interest in commissioning a storefront painting! Currently I'm living in Spain, but I do return to chicago on an annual basis for summer and springtime markets, so I exclusively have availability in the chicagoland area during the months of june and august. To keep things smooth and transparent, make sure to take a look at my booking policy below before submitting your request.</p>
 
     <input type="hidden" name="tatform" value="tattoo-commission">
 
@@ -39,26 +39,14 @@
     <label for="email">Your Email:</label>
     <input type="email" name="email" id="email" required>
 
-    <label for="tattoo-size">Tattoo Size (inches):</label>
-    <input type="text" name="tattoo-size" id="tattoo-size" placeholder="e.g., 5x5 inches" required>
+    <label for="location">Where are you located?</label>
+    <input type="text" name="location" id="location" placeholder="Comunidad Valenciana & Chicagoland only (for now <3)" required>
 
-    <label for="placement">Tattoo Placement:</label>
-    <input type="text" name="placement" id="placement" placeholder="e.g., Left forearm">
-
-    <label for="reference-image">Placement Reference (Optional):</label>
-    <input type="file" name="reference-image" id="reference-image" accept="image/*">
-  
-
-    <label for="style">Preferred Style:</label>
-    <select name="style" id="style" required>
-      <option value="Watercolor">Watercolor</option>
-      <option value="Fine Line">Linework</option>
-      <option value="Botanical">Botanical</option>
-      <option value="Custom">Custom</option>
-    </select>
+    <label for="size">Mural Size (Optional):</label>
+    <input type="text" name="size" id="size">
 
     <label for="description">Tell me about your idea:</label>
-    <textarea name="description" id="description" rows="5" placeholder="Let's get a detailed description; subject, theme or any hidden elements you may want!" required></textarea>
+    <textarea name="description" id="description" rows="5" placeholder="Let's get a detailed description; subject, theme or any special elements you may want!" required></textarea>
 
     <label for="reference-image">Reference Inspo (Optional):</label>
     <input type="file" name="reference-image" id="reference-image" accept="image/*">
@@ -69,16 +57,13 @@
   <div class="policy">
     <h2>Comissions Policy</h2>
     
-    <p>A non-refundable downpayment of $10 is required to begin the design process.
+    <p>A non-refundable downpayment of 20% of the quoted price is required to begin the design process.
         This secures your spot and covers initial concept sketches and communication.
         Payments details will be provided upon acceptance of your request.
-        Once the final design is approved, the remaining balance (total price - downpayment) will be due before delivery.
+        Once the final design is approved and completed, the remaining balance (total price - downpayment) will be due before delivery.
         Upon receipt of full payment, you will receive:</p>
            <ul> 
-           <li>A high-resolution digital file of your tattoo design.</li>
-           <li> digitized stencil ready to go for your tattoo artist.</li>
-           <li>Any agreed-upon extras (e.g., full-color painting, physical drawing, etc).</li>
-
+           <li>A full color painting/mural of the agreed upon design at the designated site</li>
            </ul>
        <p> The commission includes 2 rounds of revisions in case you want to fine-tune the design.
         The typical turnaround is 1-2 weeks, depending on complexity and current workload.
