@@ -79,6 +79,10 @@ body{
   color: #A5A58D !important;
   border-color: #A5A58D !important;
 }
+#Hero a.btnlink {
+  text-decoration: none !important;
+  color: inherit !important;
+}
 /*Fairs*/
 #Fairs > div> h2{
   color: #6B705C;
@@ -87,6 +91,9 @@ body{
 #Fairs > div > ul{
   list-style-type: none;
   margin: 1rem 0rem 2rem 0rem;
+}
+#Fairs > div>ul>ul{
+  list-style-type: disc; 
 }
 .year{
   font-size: larger;
@@ -164,4 +171,22 @@ body{
     flex-direction: column;
   }
 
+}
+/*Media for big assed imgs*/
+@media(min-width:1200px){
+  #Hero > div > div > div.col-10.col-sm-8.col-lg-6 > img{
+    max-width: 60% !important;
+  }
+}
+
+ /*Media querries for hero*/
+ @media(max-width:1200px){
+  #hero > div > div > div:nth-child(2){
+    margin-top: 1rem;
+    
+  }
+  #Hero > div > div > div:nth-child(2){
+    text-align: center;
+    justify-content: center;
+  }
 }
