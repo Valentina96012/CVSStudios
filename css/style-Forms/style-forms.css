@@ -110,6 +110,9 @@ button:hover{
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   font-size: 0.75rem;
 }
+.ty{
+  padding: 0px 0px 20px;
+}
 
 
 /* Footer*/

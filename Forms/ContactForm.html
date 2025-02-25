@@ -28,14 +28,10 @@
 
   <h1 class="chungus">Contact Form</h1>
   
-  <form name="contact-me" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <form name="contact-me" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/Forms/ty.html">
     <p>Hey honey! If you have any questions or need a little more information, feel free to let me know! I'll get back to you as soon as possible.</p>
 
     <input type="hidden" name="contact-me" value="contact-me">
-
-    <p class="hidden">
-      <label>Don’t fill this out if you're human: <input name="bot-field"></label>
-    </p>
 
     <label for="name">Your Name:</label>
     <input type="text" name="name" id="name" required>
