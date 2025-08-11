@@ -308,7 +308,7 @@ html {
   cursor: pointer;
 }
 #validate-btn:hover:not([disabled]) {
-  background: #f7ca00;
+  background: #6B705C;
 }
 #validate-btn[disabled] {
   opacity: 0.6;
@@ -334,6 +334,10 @@ html {
 
 /* Mensaje de confirmación personalizado */
 .redeem-message.confirm {
-  background: rgba(30, 144, 255, 0.1);
-  color: #1e90ff;
+  background: #6B705C;
+  color: #B7B7A4;
 }
+
+.tc-note{margin-top:10px;text-align:center;font-size:.85rem;color:#777}
+.tc-note a{color:inherit;text-decoration:underline}
+.tc-note a:hover{color:#555}
