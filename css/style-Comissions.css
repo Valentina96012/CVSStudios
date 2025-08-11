@@ -161,3 +161,179 @@ html {
     max-width: 70% !important;
   }
 }
+/*Style for Cris input*/
+
+.redeem-section {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  max-width: 540px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  margin: 2rem auto;
+  
+}
+
+
+.redeem-section h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  color: #6c6549;
+}
+.redeem-section .intro {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  color: #776d54;
+}
+
+/* Grupo de selects */
+.select-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.select-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #5b4f37;
+}
+.select-group select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Input + Button */
+.input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.input-group input,
+.input-group button {
+  font-size: 1rem;
+}
+.input-group input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.input-group button {
+  background: #6B705C;
+  border: none;
+  padding: 0 1.5rem;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.input-group button:hover:not([disabled]) {
+  background: #6B705C;
+}
+.input-group button[disabled] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Textarea (alineado con los demás) */
+.textarea-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.textarea-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+/* Mensaje de resultado */
+.redeem-message {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.redeem-message.success {
+  background: rgba(0, 128, 0, 0.1);
+  color: #006400;
+}
+.redeem-message.error {
+  background: rgba(255, 0, 0, 0.1);
+  color: #8b0000;
+}
+
+/* Ocultar con .hidden */
+.hidden {
+  display: none;
+}
+
+/* Imagen siempre al ancho del form */
+.card-image-container {
+  max-width: 604px;
+  width: 100%;
+  margin: 0 auto 2rem;
+  cursor: pointer;
+}
+.card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Asegura que file input llene el ancho también */
+.input-group input[type="file"] {
+  width: 100%;
+}
+
+/* Botón de validar código igual al botón principal */
+#validate-btn {
+  background: #6B705C;
+  border: none;
+  padding: 0 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+#validate-btn:hover:not([disabled]) {
+  background: #f7ca00;
+}
+#validate-btn[disabled] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Botón Submit Request */
+#submit-btn {
+  background: #6B705C;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.2s;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+}
+#submit-btn:hover:not([disabled]) {
+  background: #6B705C;
+}
+
+/* Mensaje de confirmación personalizado */
+.redeem-message.confirm {
+  background: rgba(30, 144, 255, 0.1);
+  color: #1e90ff;
+}

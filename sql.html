@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Gift Cards</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- SheetJS for Excel parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  </head>
+  <body class="bg-gray-100 p-6">
+    <!-- LOGIN -->
+    <div id="login-div" class="max-w-sm mx-auto bg-white p-6 rounded shadow-md">
+      <h2 class="text-xl mb-4">Acceso Administrador</h2>
+      <input
+        id="login-email"
+        type="email"
+        placeholder="Email"
+        class="w-full mb-2 border px-3 py-2 rounded"
+      />
+      <input
+        id="login-pass"
+        type="password"
+        placeholder="Contraseña"
+        class="w-full mb-4 border px-3 py-2 rounded"
+      />
+      <button id="login-btn" class="w-full bg-blue-600 text-white py-2 rounded">
+        Entrar
+      </button>
+    </div>
+
+    <!-- APP -->
+    <div id="app-div" class="hidden max-w-4xl mx-auto">
+      <div class="flex justify-end mb-4">
+        <button id="logout-btn" class="bg-red-500 text-white px-4 py-2 rounded">
+          Cerrar sesión
+        </button>
+      </div>
+
+      <h1 class="text-2xl font-bold mb-6">Gestor de Gift Cards</h1>
+
+      <!-- Formulario de Escritura -->
+      <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+        <h2 id="form-title" class="text-xl font-semibold mb-4">
+          Nueva Gift Card
+        </h2>
+        <form id="card-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input
+            type="text"
+            id="code"
+            placeholder="Código"
+            required
+            class="border px-3 py-2 rounded"
+          />
+          <input
+            type="text"
+            id="category"
+            placeholder="Categoría"
+            required
+            class="border px-3 py-2 rounded"
+          />
+          <input
+            type="text"
+            id="size"
+            placeholder="Tamaño"
+            required
+            class="border px-3 py-2 rounded"
+          />
+          <input
+            type="text"
+            id="description"
+            placeholder="Descripción"
+            class="border px-3 py-2 rounded"
+          />
+          <label class="flex items-center space-x-2">
+            <input type="checkbox" id="redeem" class="form-checkbox" />
+            <span>Canjeado</span>
+          </label>
+          <div class="col-span-full flex justify-end space-x-2">
+            <button
+              type="button"
+              id="cancel-btn"
+              class="hidden bg-gray-300 text-gray-700 px-4 py-2 rounded"
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              class="bg-blue-600 text-white px-4 py-2 rounded"
+            >
+              Agregar
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Importar Excel -->
+      <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+        <h2 class="text-xl font-semibold mb-4">Importar desde Excel</h2>
+        <input type="file" id="excel-file" accept=".xlsx,.xls" class="mb-4" />
+        <button
+          id="load-excel-btn"
+          class="bg-indigo-600 text-white px-4 py-2 rounded"
+        >
+          Cargar Excel
+        </button>
+      </div>
+
+      <!-- Búsqueda por Categoría -->
+      <div
+        class="bg-white p-4 rounded-lg shadow-md mb-6 flex items-center space-x-2"
+      >
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Buscar por categoría..."
+          class="flex-1 border px-3 py-2 rounded"
+        />
+        <button
+          id="clear-btn"
+          class="bg-gray-300 text-gray-700 px-4 py-2 rounded"
+        >
+          Limpiar
+        </button>
+      </div>
+
+      <!-- Tabla de Gift Cards -->
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold mb-4">Listado de Gift Cards</h2>
+        <table class="w-full table-auto border-collapse">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="border px-4 py-2">Código</th>
+              <th class="border px-4 py-2">Categoría</th>
+              <th class="border px-4 py-2">Tamaño</th>
+              <th class="border px-4 py-2">Descripción</th>
+              <th class="border px-4 py-2">Canjeado</th>
+              <th class="border px-4 py-2">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="cards-table" class="bg-white"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script type="module">
+      import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+      // Configuración Supabase
+      const SUPABASE_URL = "https://rlmhpfneljrrvjasdokd.supabase.co";
+      const SUPABASE_KEY =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJsbWhwZm5lbGpycnZqYXNkb2tkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQxNDY5NDIsImV4cCI6MjA2OTcyMjk0Mn0.UK3FtX8LxD7IT3dBDLTw56Q21OAmli7BDkls5Pp40Kc";
+      const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+      // Elementos login/app
+      const loginDiv = document.getElementById("login-div");
+      const appDiv = document.getElementById("app-div");
+      const emailIn = document.getElementById("login-email");
+      const passIn = document.getElementById("login-pass");
+      const loginBtn = document.getElementById("login-btn");
+      const logoutBtn = document.getElementById("logout-btn");
+
+      // Elementos CRUD
+      let editingId = null;
+      const form = document.getElementById("card-form");
+      const cancelBtn = document.getElementById("cancel-btn");
+      const formTitle = document.getElementById("form-title");
+      const tableBody = document.getElementById("cards-table");
+      const searchInput = document.getElementById("search-input");
+      const clearBtn = document.getElementById("clear-btn");
+      const excelFileInput = document.getElementById("excel-file");
+      const loadExcelBtn = document.getElementById("load-excel-btn");
+      const fields = ["code", "category", "size", "description", "redeem"];
+
+      // Al cargar página, verifica sesión
+      window.addEventListener("DOMContentLoaded", async () => {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+        if (session) initApp();
+        else showLogin();
+      });
+
+      function showLogin() {
+        loginDiv.classList.remove("hidden");
+        appDiv.classList.add("hidden");
+      }
+      function showApp() {
+        loginDiv.classList.add("hidden");
+        appDiv.classList.remove("hidden");
+      }
+
+      // Login
+      loginBtn.onclick = async () => {
+        const { error } = await supabase.auth.signInWithPassword({
+          email: emailIn.value,
+          password: passIn.value,
+        });
+        if (error) return alert("Credenciales inválidas");
+        initApp();
+      };
+      // Logout
+      logoutBtn.onclick = async () => {
+        await supabase.auth.signOut();
+        // Limpiar campos de login y formulario
+        emailIn.value = "";
+        passIn.value = "";
+        resetForm();
+        showLogin();
+      };
+
+      function initApp() {
+        showApp();
+        // listeners CRUD
+        form.addEventListener("submit", handleSubmit);
+        cancelBtn.addEventListener("click", resetForm);
+        searchInput.addEventListener("input", () =>
+          loadCards(searchInput.value.trim())
+        );
+        clearBtn.addEventListener("click", () => {
+          searchInput.value = "";
+          loadCards();
+        });
+        tableBody.addEventListener("click", handleTableClick);
+        loadExcelBtn.addEventListener("click", handleExcelUpload);
+        loadCards();
+      }
+
+      // Cargar tarjetas
+      async function loadCards(filter = "") {
+        let query = supabase
+          .from("giftcards")
+          .select("*")
+          .order("id", { ascending: true });
+        if (filter) query = query.ilike("category", `%${filter}%`);
+        const { data, error } = await query;
+        if (error) console.error(error);
+        else renderTable(data);
+      }
+      function renderTable(cards) {
+        tableBody.innerHTML = "";
+        cards.forEach((card) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td class="border px-4 py-2">${card.code}</td>
+            <td class="border px-4 py-2">${card.category}</td>
+            <td class="border px-4 py-2">${card.size}</td>
+            <td class="border px-4 py-2">${card.description || ""}</td>
+            <td class="border px-4 py-2">${card.redeem ? "Sí" : "No"}</td>
+            <td class="border px-4 py-2 space-x-2">
+              <button data-id="${
+                card.id
+              }" data-action="edit" class="px-2 py-1 bg-yellow-400 text-white rounded">Editar</button>
+              <button data-id="${
+                card.id
+              }" data-action="delete" class="px-2 py-1 bg-red-500 text-white rounded">Eliminar</button>
+            </td>
+          `;
+          tableBody.appendChild(tr);
+        });
+      }
+
+      // Delegación editar/eliminar
+      async function handleTableClick(e) {
+        const btn = e.target.closest("button[data-action]");
+        if (!btn) return;
+        const id = btn.dataset.id;
+        if (btn.dataset.action === "edit") return startEdit(id);
+        if (btn.dataset.action === "delete") return confirmDelete(id);
+      }
+      async function startEdit(id) {
+        const { data, error } = await supabase
+          .from("giftcards")
+          .select("*")
+          .eq("id", id)
+          .single();
+        if (error) {
+          console.error(error);
+          return;
+        }
+        fields.forEach((f) => {
+          const el = document.getElementById(f);
+          if (el.type === "checkbox") el.checked = data[f];
+          else el.value = data[f] || "";
+        });
+        editingId = id;
+        formTitle.textContent = "Editar Gift Card";
+        cancelBtn.classList.remove("hidden");
+        form.querySelector('button[type="submit"]').textContent = "Actualizar";
+      }
+      async function confirmDelete(id) {
+        if (!confirm("¿Eliminar esta gift card?")) return;
+        const { error } = await supabase
+          .from("giftcards")
+          .delete()
+          .eq("id", id);
+        if (error) console.error(error);
+        else loadCards(searchInput.value.trim());
+      }
+
+      // Crear/actualizar
+      async function handleSubmit(e) {
+        e.preventDefault();
+        const payload = {
+          code: document.getElementById("code").value.trim(),
+          category: document.getElementById("category").value.trim(),
+          size: document.getElementById("size").value.trim(),
+          description: document.getElementById("description").value.trim(),
+          redeem: document.getElementById("redeem").checked,
+        };
+        let res;
+        if (editingId)
+          res = await supabase
+            .from("giftcards")
+            .update(payload)
+            .eq("id", editingId);
+        else res = await supabase.from("giftcards").insert(payload);
+        if (res.error) console.error(res.error);
+        else {
+          loadCards(searchInput.value.trim());
+          resetForm();
+        }
+      }
+      function resetForm() {
+        form.reset();
+        editingId = null;
+        formTitle.textContent = "Nueva Gift Card";
+        cancelBtn.classList.add("hidden");
+        form.querySelector('button[type="submit"]').textContent = "Agregar";
+      }
+
+      // Carga Excel y bulk insert
+      async function handleExcelUpload() {
+        const file = excelFileInput.files[0];
+        if (!file) return alert("Selecciona un archivo Excel");
+        const data = await file.arrayBuffer();
+        const wb = XLSX.read(data, { type: "array" });
+        const rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+        if (!rows.length) return alert("No hay datos");
+        const insertData = rows.map((r) => ({
+          code: r.code || r.Code || "",
+          category: r.category || r.Category || "",
+          size: r.size || r.Size || "",
+          description: r.description || r.Description || "",
+          redeem: r.redeem === true || r.redeem === "TRUE",
+        }));
+        const { error } = await supabase.from("giftcards").insert(insertData);
+        if (error) console.error(error);
+        else {
+          alert("Importado");
+          loadCards();
+        }
+      }
+    </script>
+  </body>
+</html>

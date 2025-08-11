@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paint Inventory</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+  <!-- LOGIN -->
+  <div id="login-div" class="max-w-sm mx-auto bg-white p-6 rounded shadow-md">
+    <h2 class="text-xl mb-4">Administrator Access</h2>
+    <input id="login-email" type="email" placeholder="Email" class="w-full mb-2 border px-3 py-2 rounded"/>
+    <input id="login-pass"  type="password" placeholder="Password" class="w-full mb-4 border px-3 py-2 rounded"/>
+    <button id="login-btn" class="w-full bg-blue-600 text-white py-2 rounded">Login</button>
+  </div>
+
+  <!-- APP -->
+  <div id="app-div" class="hidden max-w-4xl mx-auto">
+    <div class="flex justify-end mb-4">
+      <button id="logout-btn" class="bg-red-500 text-white px-4 py-2 rounded">Logout</button>
+    </div>
+
+    <h1 class="text-2xl font-bold mb-6">Paint Inventory</h1>
+
+    <!-- Form -->
+    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+      <h2 id="form-title" class="text-xl font-semibold mb-4">New Painting</h2>
+      <form id="inventario-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <input type="text" id="nombre_pintura" placeholder="Painting Name" required class="border px-3 py-2 rounded"/>
+        <input type="text" id="descripcion"    placeholder="Description"                  class="border px-3 py-2 rounded"/>
+        <input type="number" step="0.01" id="precio_estimado" placeholder="Estimated Price (USD)" class="border px-3 py-2 rounded"/>
+        <input type="number" step="0.01" id="precio_venta"    placeholder="Sale Price (USD)"     class="border px-3 py-2 rounded"/>
+        <select id="categoria" required class="border px-3 py-2 rounded">
+          <option value="" disabled selected>Select Category</option>
+          <option>Close Up Botany</option>
+          <option>W.L. of CHicago</option>
+          <option>Urban Ecology</option>
+          <option>Bookmarks</option>
+          <option>Friends</option>
+          <option>Prints</option>
+        </select>
+        <input type="number" id="year_pintura" placeholder="Painting Year" class="border px-3 py-2 rounded"/>
+        <input type="datetime-local" id="fecha_venta" class="border px-3 py-2 rounded" disabled/>
+        <label class="flex items-center space-x-2">
+          <input type="checkbox" id="estado_vendido" class="form-checkbox"/>
+          <span>Sold?</span>
+        </label>
+        <input type="text" id="cliente"    placeholder="Client (if applicable)" class="border px-3 py-2 rounded"/>
+        <input type="url"  id="imagen_url" placeholder="Image URL"                class="border px-3 py-2 rounded"/>
+        <input type="number" id="stock" value="1" min="1" placeholder="Stock"     class="border px-3 py-2 rounded"/>
+
+        <div class="col-span-full flex justify-end space-x-2">
+          <button type="button" id="cancel-btn" class="hidden bg-gray-300 text-gray-700 px-4 py-2 rounded">
+            Cancel
+          </button>
+          <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="mb-6">
+      <div class="relative h-8 bg-gray-300 rounded overflow-hidden">
+        <!-- full track -->
+        <div id="progress-fill" class="absolute left-0 top-0 h-full bg-green-500"></div>
+        <!-- chicken icon -->
+        <img
+          id="progress-icon"
+          src="https://cdn-icons-png.flaticon.com/512/112/112291.png"
+          alt="chicken"
+          class="absolute top-1/2 w-8 h-8 transform -translate-y-1/2"
+          style="left: 0;"
+        />
+      </div>
+      <p class="text-sm mt-1">
+        Sold: <span id="sum-sold">0</span> / 
+        Estimated: <span id="sum-est">0</span>
+      </p>
+    </div>
+  
+    <!-- Filters and Search -->
+    <div class="bg-white p-4 rounded-lg shadow-md mb-6 space-y-4">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <!-- Year -->
+        <div>
+          <label class="block mb-1">Filter by Year</label>
+          <select id="year-filter" class="w-full border px-3 py-2 rounded">
+            <!-- dynamic options -->
+          </select>
+        </div>
+        <!-- Search Field -->
+        <div>
+          <label class="block mb-1">Search in</label>
+          <select id="field-filter" class="w-full border px-3 py-2 rounded">
+            <option value="nombre_pintura">Name</option>
+            <option value="descripcion">Description</option>
+            <option value="categoria">Category</option>
+            <option value="cliente">Client</option>
+          </select>
+        </div>
+        <!-- Term -->
+        <div>
+          <label class="block mb-1">Search Term</label>
+          <div class="flex space-x-2">
+            <input id="search-input" type="text" placeholder="Search..." class="flex-1 border px-3 py-2 rounded"/>
+            <button id="clear-btn" class="bg-gray-300 text-gray-700 px-4 py-2 rounded">Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white p-6 rounded-lg shadow-md overflow-hidden">
+      <h2 class="text-xl font-semibold mb-4">Paintings List</h2>
+      <div class="overflow-auto">
+        <table class="w-full table-fixed border-collapse text-sm" style="table-layout: fixed;">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="border px-2 py-1 truncate">Name</th>
+              <th class="border px-2 py-1 truncate">Description</th>
+              <th class="border px-2 py-1 truncate">Estimated (USD)</th>
+              <th class="border px-2 py-1 truncate">Sale (USD)</th>
+              <th class="border px-2 py-1 truncate">Category</th>
+              <th class="border px-2 py-1 truncate">Year</th>
+              <th class="border px-2 py-1 truncate">Sale Date</th>
+              <th class="border px-2 py-1 truncate">Sold</th>
+              <th class="border px-2 py-1 truncate">Client</th>
+              <th class="border px-2 py-1 truncate">Stock</th>
+              <th class="border px-2 py-1 truncate">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="inventory-table" class="bg-white text-xs">
+            <!-- rows generated dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+    // Supabase configuration
+    const SUPABASE_URL = "https://rlmhpfneljrrvjasdokd.supabase.co";
+    const SUPABASE_KEY =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJsbWhwZm5lbGpycnZqYXNkb2tkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQxNDY5NDIsImV4cCI6MjA2OTcyMjk0Mn0.UK3FtX8LxD7IT3dBDLTw56Q21OAmli7BDkls5Pp40Kc";
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // Elements
+    const loginDiv     = document.getElementById("login-div");
+    const appDiv       = document.getElementById("app-div");
+    const emailIn      = document.getElementById("login-email");
+    const passIn       = document.getElementById("login-pass");
+    const loginBtn     = document.getElementById("login-btn");
+    const logoutBtn    = document.getElementById("logout-btn");
+    const form         = document.getElementById("inventario-form");
+    const cancelBtn    = document.getElementById("cancel-btn");
+    const formTitle    = document.getElementById("form-title");
+    const tableBody    = document.getElementById("inventory-table");
+    const searchIn     = document.getElementById("search-input");
+    const clearBtn     = document.getElementById("clear-btn");
+    const yearFilter   = document.getElementById("year-filter");
+    const fieldFilter  = document.getElementById("field-filter");
+
+    const nombreIn     = document.getElementById("nombre_pintura");
+    const descIn       = document.getElementById("descripcion");
+    const estIn        = document.getElementById("precio_estimado");
+    const saleIn       = document.getElementById("precio_venta");
+    const catIn        = document.getElementById("categoria");
+    const yearIn       = document.getElementById("year_pintura");
+    const dateIn       = document.getElementById("fecha_venta");
+    const soldIn       = document.getElementById("estado_vendido");
+    const clientIn     = document.getElementById("cliente");
+    const imgIn        = document.getElementById("imagen_url");
+    const stockIn      = document.getElementById("stock");
+
+    let editingId = null;
+
+    // Year options 2025–2035
+    for(let y=2025; y<=2035; y++){
+      const opt = document.createElement("option");
+      opt.value = y;
+      opt.textContent = y;
+      yearFilter.append(opt);
+    }
+    // default: current year
+    yearFilter.value = new Date().getFullYear();
+
+    // Authenticate on load
+    window.addEventListener("DOMContentLoaded", async ()=>{
+      const { data:{session} } = await supabase.auth.getSession();
+      session ? initApp() : showLogin();
+    });
+
+    function showLogin(){
+      loginDiv.classList.remove("hidden");
+      appDiv.classList.add("hidden");
+    }
+    function showApp(){
+      loginDiv.classList.add("hidden");
+      appDiv.classList.remove("hidden");
+    }
+
+    loginBtn.onclick = async ()=>{
+      const { error } = await supabase.auth.signInWithPassword({
+        email: emailIn.value,
+        password: passIn.value,
+      });
+      if(error) alert("Invalid credentials");
+      else initApp();
+    };
+
+    logoutBtn.onclick = async ()=>{
+      await supabase.auth.signOut();
+      resetForm();
+      showLogin();
+    };
+
+    // Update progress bar
+    function updateProgress(sumSold, sumEst) {
+      const fill = document.getElementById("progress-fill");
+      const icon = document.getElementById("progress-icon");
+      const soldSpan = document.getElementById("sum-sold");
+      const estSpan  = document.getElementById("sum-est");
+
+      const pct = sumEst > 0
+        ? Math.min(100, (sumSold / sumEst) * 100)
+        : 0;
+
+      fill.style.width = pct + "%";
+      icon.style.left  = pct + "%";
+
+      soldSpan.textContent = sumSold;
+      estSpan.textContent  = sumEst;
+    }
+
+    function initApp(){
+      showApp();
+      // default year in form
+      yearIn.value = new Date().getFullYear();
+      // enable/disable sale date
+      dateIn.disabled = true;
+      soldIn.addEventListener("change", ()=>{
+        if(soldIn.checked){
+          dateIn.disabled = false;
+          dateIn.value = new Date().toISOString().slice(0,16);
+        } else {
+          dateIn.disabled = true;
+          dateIn.value = "";
+        }
+      });
+      form.addEventListener("submit", handleSubmit);
+      cancelBtn.addEventListener("click", resetForm);
+      searchIn.addEventListener("input", ()=> loadInventory());
+      clearBtn.addEventListener("click", ()=>{ searchIn.value=""; loadInventory(); });
+      yearFilter.addEventListener("change", ()=> loadInventory());
+      fieldFilter.addEventListener("change", ()=> loadInventory());
+      tableBody.addEventListener("click", handleTableClick);
+      loadInventory();
+    }
+
+    // Load data with filters
+    async function loadInventory(){
+      let q = supabase.from("inventario").select("*").order("created_at",{ascending:false});
+
+      // filter year
+      const yf = yearFilter.value;
+      if(yf) q = q.eq("year_pintura", parseInt(yf));
+
+      // text filter
+      const term = searchIn.value.trim();
+      const field= fieldFilter.value;
+      if(term){
+        q = q.ilike(field, `%${term}%`);
+      }
+
+      const { data, error } = await q;
+      if(error) console.error(error);
+      else {
+        renderTable(data);
+        // calculate sums and update bar
+        const sumSold = data.reduce((acc, item) => acc + (item.precio_venta || 0), 0);
+        const sumEst  = data.reduce((acc, item) => acc + (item.precio_estimado || 0), 0);
+        updateProgress(sumSold, sumEst);
+      }
+    }
+
+    function renderTable(items){
+      tableBody.innerHTML="";
+      items.forEach(item=>{
+        const tr = document.createElement("tr");
+        tr.innerHTML=`
+          <td class="border px-4 py-2">${item.nombre_pintura}</td>
+          <td class="border px-4 py-2">${item.descripcion||""}</td>
+          <td class="border px-4 py-2">${item.precio_estimado||""}</td>
+          <td class="border px-4 py-2">${item.precio_venta||""}</td>
+          <td class="border px-4 py-2">${item.categoria}</td>
+          <td class="border px-4 py-2">${item.year_pintura||""}</td>
+          <td class="border px-4 py-2">${item.fecha_venta||""}</td>
+          <td class="border px-4 py-2">${item.estado_vendido?"Yes":"No"}</td>
+          <td class="border px-4 py-2">${item.cliente||""}</td>
+          <td class="border px-4 py-2">${item.stock}</td>
+          <td class="border px-4 py-2 space-x-2">
+            <button data-id="${item.id}" data-action="edit"   class="px-2 py-1 bg-yellow-400 text-white rounded">Edit</button>
+            <button data-id="${item.id}" data-action="delete" class="px-2 py-1 bg-red-500  text-white rounded">Delete</button>
+          </td>`;
+        tableBody.append(tr);
+      });
+    }
+
+    async function handleTableClick(e){
+      const btn = e.target.closest("button[data-action]");
+      if(!btn) return;
+      const {id,action} = btn.dataset;
+      if(action==="edit")   return startEdit(id);
+      if(action==="delete") return confirmDelete(id);
+    }
+
+    async function startEdit(id){
+      const { data, error } = await supabase.from("inventario").select("*").eq("id",id).single();
+      if(error) return console.error(error);
+      nombreIn.value   = data.nombre_pintura;
+      descIn.value     = data.descripcion||"";
+      estIn.value      = data.precio_estimado||"";
+      saleIn.value     = data.precio_venta||"";
+      catIn.value      = data.categoria;
+      yearIn.value     = data.year_pintura||"";
+      dateIn.value     = data.fecha_venta||"";
+      soldIn.checked   = data.estado_vendido;
+      if(soldIn.checked) dateIn.disabled=false;
+      clientIn.value   = data.cliente||"";
+      imgIn.value      = data.imagen_url||"";
+      stockIn.value    = data.stock;
+      editingId = id;
+      formTitle.textContent = "Edit Painting";
+      cancelBtn.classList.remove("hidden");
+      form.querySelector('button[type="submit"]').textContent = "Update";
+    }
+
+    async function confirmDelete(id){
+      if(!confirm("Delete this painting?")) return;
+      const { error } = await supabase.from("inventario").delete().eq("id", id);
+      if(error) console.error(error);
+      else loadInventory();
+    }
+
+    async function handleSubmit(e){
+      e.preventDefault();
+      const payload = {
+        nombre_pintura:  nombreIn.value.trim(),
+        descripcion:     descIn.value.trim()||null,
+        precio_estimado: estIn.value?parseFloat(estIn.value):null,
+        precio_venta:    saleIn.value?parseFloat(saleIn.value):null,
+        categoria:       catIn.value,
+        year_pintura:    yearIn.value?parseInt(yearIn.value):null,
+        fecha_venta:     soldIn.checked?dateIn.value:null,
+        estado_vendido:  soldIn.checked,
+        cliente:         clientIn.value.trim()||null,
+        imagen_url:      imgIn.value.trim()||null,
+        stock:           parseInt(stockIn.value)||1
+      };
+      let res;
+      if(editingId){
+        res = await supabase.from("inventario").update(payload).eq("id", editingId);
+      } else {
+        res = await supabase.from("inventario").insert([payload]);
+      }
+      if(res.error) console.error(res.error);
+      else {
+        loadInventory();
+        resetForm();
+      }
+    }
+
+    function resetForm(){
+      form.reset();
+      editingId = null;
+      formTitle.textContent = "New Painting";
+      cancelBtn.classList.add("hidden");
+      form.querySelector('button[type="submit"]').textContent = "Save";
+      yearIn.value = new Date().getFullYear();
+      dateIn.disabled = true;
+    }
+  </script>
+</body>
+</html>
