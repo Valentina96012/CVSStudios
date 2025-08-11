@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // **3) Feedback de éxito y reset**
-      msgDiv.textContent = "Your submission has been sent! I'll get back to you asap!";
+      msgDiv.textContent = "Your submission has been sent! I'll get back to you ASAP!";
       msgDiv.className   = "redeem-message confirm";
 
       setTimeout(() => {
