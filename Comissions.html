@@ -284,10 +284,10 @@
   </form>
     -->
     <section class="redeem-section">
-      <h1>Redeem Gift Card</h1>
-      <p class="intro">
-        Select artwork type, choose size (if needed) and enter your code to
-        receive your custom painting.
+      <h1 class="chungus ">Redeem your Art Token</h1>
+      <p class="intro smol">
+        Select the artwork type, size, and enter your code to
+        get started on your custom painting!
       </p>
 
       <!-- FORM apuntando a Formspree -->
@@ -298,7 +298,7 @@
         enctype="multipart/form-data"
       >
         <!-- 1) Selección de categoría -->
-        <div class="select-group">
+        <div class="select-group" >
           <label for="category">Artwork type:</label>
           <select name="category" id="category" required>
             <option value="" disabled selected>Choose an option</option>
@@ -327,11 +327,11 @@
             name="code"
             type="text"
             id="code"
-            placeholder="Code (no dashes needed)"
+            placeholder="RedemptionCode"
             aria-label="Gift card code"
             required
           />
-          <button type="button" id="validate-btn">Validate Code</button>
+          <button class="chungus" type="button" id="validate-btn">Validate Code</button>
         </div>
 
         <div id="redeem-message" class="redeem-message"></div>

@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     replytoHidden.value = emailInput.value.trim();
 
-    msgDiv.textContent = "⏳ Enviando tu solicitud…";
+    msgDiv.textContent = "⏳ Submitting Request...";
     msgDiv.className   = "redeem-message";
 
     const data = new FormData(form);
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // **3) Feedback de éxito y reset**
-      msgDiv.textContent = "🎉 Tu solicitud ha sido enviada con éxito!";
+      msgDiv.textContent = "Your submission has been sent! I'll get back to you asap!";
       msgDiv.className   = "redeem-message confirm";
 
       setTimeout(() => {
@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 2000);
     })
     .catch(err => {
-      msgDiv.textContent = "❌ Hubo un problema enviando. Intenta de nuevo.";
+      msgDiv.textContent = "There's been a problem submitting, please try again.";
       msgDiv.classList.add("error");
       console.error(err);
     });
