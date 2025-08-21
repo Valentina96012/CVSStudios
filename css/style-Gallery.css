@@ -167,3 +167,47 @@ body{
       justify-content: center;
     }
   }
+
+  /*gray overlay*/
+  #gallery .grid-item{
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px; /* optional but pretty */
+}
+
+#gallery .grid-item img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+#gallery .overlay{
+  position:absolute;
+  inset:0;                     /* top:0; right:0; bottom:0; left:0 */
+  background:rgba(0,0,0,.45);  /* semi-transparent gray */
+  color:#e7e7e7;
+  font-family: 'Old Standard TT', 'Times New Roman';
+  font-weight: 600;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:12px 16px;
+  opacity:0;
+  transition:opacity .25s ease;
+  pointer-events:none;         /* allows clicks to pass through (change if you add buttons) */
+}
+
+#gallery .overlay p{
+  margin:0;
+  font-size:clamp(0.9rem, 1.2vw, 1.05rem);
+  letter-spacing:.2px;
+  line-height:1.25;
+}
+
+#gallery .grid-item:hover .overlay,
+#gallery .grid-item:focus-within .overlay,
+#gallery .grid-item.show-overlay .overlay{  /* mobile tap support */
+  opacity:1;
+}
+
