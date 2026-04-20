@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #292F27; /* green */
+  color: #D1C1B8;
+}
+
+/* center EVERYTHING */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+ 
+  text-align: center;
+  padding: 2rem;
+}
+.text{
+    margin: 2rem;
+}
+/* logo */
+.brand img {
+  height: 3rem;
+  margin: 2rem;
+}
+
+/* title */
+h1 {
+  margin-bottom: 1rem;
+    font-family: Boska-Black;
+    font-size: clamp(1.5rem, 3vw, 10rem);
+}
+
+/* paragraph */
+p {
+  max-width: 500px;
+  margin-bottom: 2rem;
+   font-family: 'Poiret One';
+    font-size: clamp(1.2rem, 1vw, 4rem);
+}
+
+/* button */
+a {
+  text-decoration: none;
+   font-family: 'Poiret One';
+    font-size: clamp(1.2rem, 1vw, 4rem);
+  color: #292F27;
+  background: #D1C1B8;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: bold;
+}
