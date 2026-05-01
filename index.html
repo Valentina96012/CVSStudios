@@ -10,12 +10,15 @@
 
       gtag('config', 'G-RMGF2EKCNY');
     </script>
+    <script src="fade.js"></script>
     <meta charset="UTF-8">
     <link rel="icon" href="/Images/favicon.ico">
     <link rel="shortcut icon" href="/Images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="./Images/web.webp" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="./Images/webtop.webp" media="(max-width: 768px)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/boska.css">
     <link rel="stylesheet" href="./css/index.css">
@@ -24,26 +27,33 @@
 </head>
 <body>
     <section class="hero">
-        <header class="navbar">
-            <ul class="nav nav-pills smol">
+        <header class="navbar smol fade-text delay-3">
+            <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+   
+              ☰
+
+            </button>
+            <ul class="nav nav-pills smol  mobile-menu">
             <li class="nav-item"><a href="./index.html" class="nav-link active navbutton" aria-current="page">Home</a></li>
             <li class="nav-item"><a href="./Work.html" class="nav-link">Work</a></li>
+            <li class="nav-item"><a href="./Water.html" class="nav-link">Studies</a></li>
             <li class="nav-item"><a href="./About.html" class="nav-link">About</a></li>
             <li class="nav-item"><a href="./Contact.html" class="nav-link">Contact</a></li>
           </ul>
+      
+    </section>
         </header>
   <div class="hero-bg">
     <img src="./Images/heroimgretouch.webp" alt="Electric ecological interaction between bees and flowers">
   </div>
-   <div>
+   <div class="hero-bgphonez hidden"   loading="eager">
+    <img fetchpriority="high" loading="eager" src="./Images/web.webp" alt="Electric ecological interaction between bees and flowers">
+  </div>
 
-
-    </div>
-
-  <div class="hero-text">
-    <h1 class="chungus">Research,<br>
-      <span class="chungus italic">Illustrated.</span></h1>
-    <p class="smol">
+  <div class="hero-text ">
+    <h1 class="chungus fade-text delay-1">Research,<br>
+      <span class="chungus italic fade-text delay-2">Illustrated.</span></h1>
+    <p class="smol fade-text delay-3">
       Aerial electroreception of weak electric fields between flora
       and pollinators via mechanosensory hairs in bees.<br>
       Clarke et al. 2017
@@ -53,25 +63,28 @@
   <div class="hero-overlay">
     <img src="./Images/elevtrotop.webp" alt="">
   </div>
+   </div>
+   <div class="hero-bgphonezover hidden"   loading="eager">
+    <img src="./Images/webtop.webp" alt="Electric ecological interaction between bees and flowers"  loading="eager">
+  </div>
 </section>
  <section class="frame">
   <div class="inner">
     <div class="text">
-      <h2 class="chungus">Interpretive Framework</h2>
+      <h2 class="chungus fade-text delay-1">Interpretive Framework</h2>
 
-      <p class="steps smol">
+      <p class="steps smol fade-text delay-2">
         Literature Review <span>→</span>
         Interpretation <span>→</span>
         Visual Construction
       </p>
 
       <div class="box">
-        <p class="lead smol">
-          Translating scientific research into
-          visually legible narratives.
+        <p class="lead smol fade-text delay-2">
+          I translate complex scientific research into clear, visually legible narratives.
         </p>
 
-        <p class="ref smol">
+        <p class="ref smol fade-text delay-2">
           Biorefinery strategy for the conversion of sugar-derived biomass
           into valuable nitrile-containing compounds using task-specific
           ionic liquid phases.<br>
@@ -81,9 +94,9 @@
       </div>
     </div>
 
-    <div class="media">
+    <div class="media ">
       <img src="./Images/sweetflow cut.webp" alt="" class="main">
-      <img src="./Images/GreenchemCoverbeige.webp" alt="" class="cover">
+      <img src="./Images/GreenchemCoverbeige.webp" alt="" class="cover fade-text delay-2">
     </div>
   </div>
  <div class="frame-overlay">
@@ -99,40 +112,40 @@
 
   <div class="right">
     <div class="hero-copy">
-      <p class="smol kicker">Develop a</p>
-      <h3 class="chungus">Visual Narrative</h3>
-      <p class="smol intro">
+      <p class="smol kicker fade-text delay-1">Comission a</p>
+      <h3 class="chungus fade-text delay-2">Visual Narrative</h3>
+      <p class="smol intro fade-text delay-3">
         Available for scientific illustration, editorial work, and independent visual projects.
       </p>
 
       <div class="hero-buttons">
-        <a href="./Work.html" class="smol btn">View Work</a>
-        <a href="./Contact.html" class="smol btn">Contact</a>
+        <a href="./Work.html" class="smol btn fade-text delay-4">View Projects</a>
+        <a href="./Contact.html" class="smol btn fade-text delay-4">Start a Project</a>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="site-footer">
+  <footer class="site-footer">
     <div class="footer-top">
-      <div class="footer-signature">
+      <div class="footer-signature smol fade-text delay-1">
         <img src="./Images/CVSStudios Logo.webp" alt="Signature" class="signature-img">
       </div>
 
-      <a href="mailto:carmita96012@gmail.com" class="smol footer-email">
+      <a href="mailto:carmita96012@gmail.com" class="smol fade-text delay-1 footer-email">
         carmita96012@gmail.com
       </a>
     </div>
 
     <div class="footer-bottom">
       <nav class="footer-nav">
-        <a href="./Index.html" class="smol">Home</a>
-        <a href="./Work.html" class="smol">Work</a>
-        <a href="./About.html" class="smol">About</a>
-        <a href="./Contact.html" class="smol">Contact</a>
+        <a href="./Index.html" class="smol fade-text delay-1">Home</a>
+        <a href="./Work.html" class="smol fade-text delay-1">Work</a>
+        <a href="./About.html" class="smol fade-text delay-1">About</a>
+        <a href="./Contact.html" class="smol fade-text delay-1">Contact</a>
       </nav>
 
-      <div class="footer-socials">
+      <div class="footer-socials smol fade-text delay-1">
         <a href="https://www.linkedin.com/in/cvsstudios/" aria-label="LinkedIn" class="footer-icon">
           <!-- linkedin svg -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -147,6 +160,9 @@
           </svg>
         </a>
       </div>
+    </div>
+    <div class="last">
+        <p class="smol fade-text delay-1">© 2026 CVS Studios</p>
     </div>
   </footer>
 </body>

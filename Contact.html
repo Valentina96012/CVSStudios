@@ -10,6 +10,7 @@
 
       gtag('config', 'G-RMGF2EKCNY');
     </script>
+    <script src="fade.js"></script>
     <meta charset="UTF-8">
     <link rel="icon" href="/Images/favicon.ico">
     <link rel="shortcut icon" href="/Images/favicon.ico">
@@ -25,18 +26,24 @@
 <body>
     <section class="top">
         <header class="navbar">
-            <ul class="nav nav-pills smol">
+            <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+   
+              ☰
+
+            </button>
+            <ul class="nav nav-pills smol  mobile-menu">
             <li class="nav-item"><a href="./index.html" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="./Work.html" class="nav-link" >Work</a></li>
-            <li class="nav-item"><a href="./About.html" class="nav-link ">About</a></li>
+            <li class="nav-item"><a href="./Work.html" class="nav-link">Work</a></li>
+            <li class="nav-item"><a href="./Water.html" class="nav-link">Studies</a></li>
+            <li class="nav-item"><a href="./About.html" class="nav-link">About</a></li>
             <li class="nav-item"><a href="./Contact.html" class="nav-link active navbutton" aria-current="page">Contact</a></li>
           </ul>
         </header>
     </section>
     
-<h1 class="chungus">Contact Form</h1>
+<h1 class="chungus fade-text delay-1">Contact Form</h1>
   
-  <form class="smol" name="contact-me" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="./Ty.html">
+  <form class="smol fade-text delay-2" name="contact-me" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="./Ty.html">
     <p>For project inquiries or pricing, please use the form below.
       I will respond promptly.</p>
 
@@ -54,62 +61,62 @@
 
     <button class="smol" type="submit">Submit Request</button>
   </form>
-<h1 class="chungus title">Price Ranges</h1>
+<h1 class="chungus title fade-text delay-1">Price Ranges</h1>
 
   <section class="pricing">
     
 
   <div class="pricing-table smol">
 
-    <div class="pricing-row">
+    <div class="pricing-row fade-text delay-2">
       <div class="pricing-text">Simple scientific figure</div>
+      <div class="pricing-price">€60–120</div>
+    </div>
+
+    <div class="pricing-row fade-text delay-2">
+      <div class="pricing-text">Complex or multi-step figure</div>
+      <div class="pricing-price">€80–220</div>
+    </div>
+
+    <div class="pricing-row fade-text delay-2">
+      <div class="pricing-text">Graphical abstract</div>
       <div class="pricing-price">€120–300</div>
     </div>
 
-    <div class="pricing-row">
-      <div class="pricing-text">Complex or multi-step figure</div>
-      <div class="pricing-price">€300–500</div>
-    </div>
-
-    <div class="pricing-row">
-      <div class="pricing-text">Graphical abstract</div>
-      <div class="pricing-price">€200–500</div>
-    </div>
-
-    <div class="pricing-row">
+    <div class="pricing-row fade-text delay-2">
       <div class="pricing-text">Journal cover (2D)</div>
-      <div class="pricing-price">€300–800</div>
+      <div class="pricing-price">€240–400</div>
     </div>
 
-    <div class="pricing-row">
+    <div class="pricing-row fade-text delay-2">
       <div class="pricing-text">Journal cover (3D) </div>
-      <div class="pricing-price">€800–1200</div>
+      <div class="pricing-price">€420–600</div>
     </div>
 
   </div>
 
 </section>
 
-  <footer class="site-footer">
+   <footer class="site-footer">
     <div class="footer-top">
-      <div class="footer-signature">
+      <div class="footer-signature smol fade-text delay-1">
         <img src="./Images/CVSStudios Logo.webp" alt="Signature" class="signature-img">
       </div>
 
-      <a href="mailto:carmita96012@gmail.com" class="smol footer-email">
+      <a href="mailto:carmita96012@gmail.com" class="smol fade-text delay-1 footer-email">
         carmita96012@gmail.com
       </a>
     </div>
 
     <div class="footer-bottom">
       <nav class="footer-nav">
-        <a href="./Index.html" class="smol">Home</a>
-        <a href="./Work.html" class="smol">Work</a>
-        <a href="./About.html" class="smol">About</a>
-        <a href="./Contact.html" class="smol">Contact</a>
+        <a href="./Index.html" class="smol fade-text delay-1">Home</a>
+        <a href="./Work.html" class="smol fade-text delay-1">Work</a>
+        <a href="./About.html" class="smol fade-text delay-1">About</a>
+        <a href="./Contact.html" class="smol fade-text delay-1">Contact</a>
       </nav>
 
-      <div class="footer-socials">
+      <div class="footer-socials smol fade-text delay-1">
         <a href="https://www.linkedin.com/in/cvsstudios/" aria-label="LinkedIn" class="footer-icon">
           <!-- linkedin svg -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -124,6 +131,9 @@
           </svg>
         </a>
       </div>
+    </div>
+    <div class="last">
+        <p class="smol fade-text delay-1">© 2026 CVS Studios</p>
     </div>
   </footer>
 
