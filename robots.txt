@@ -1,0 +1,48 @@
+User-agent: *
+Allow: /
+
+# OpenAI / ChatGPT search visibility
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI model-training crawler
+User-agent: GPTBot
+Allow: /
+
+# OpenAI user-triggered browsing/retrieval
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity search visibility
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic / Claude search visibility
+User-agent: Claude-SearchBot
+Allow: /
+
+# Anthropic / Claude user-triggered browsing
+User-agent: Claude-User
+Allow: /
+
+# Anthropic model-training crawler
+User-agent: ClaudeBot
+Allow: /
+
+# Google search
+User-agent: Googlebot
+Allow: /
+
+# Google AI-related opt-in signal
+User-agent: Google-Extended
+Allow: /
+
+# Common search engines
+User-agent: Bingbot
+Allow: /
+User-agent: DuckDuckBot
+Allow: /
+User-agent: Applebot
+Allow: /
+
+Sitemap: https://cvsstudios.art/sitemap.xml
